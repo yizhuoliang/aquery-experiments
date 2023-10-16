@@ -1,0 +1,13 @@
+
+CREATE TABLE prices (
+    month INT UNIQUE,
+    price INT
+);
+
+LOAD DATA LOCAL INFILE './test_data.csv'
+INTO TABLE prices
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT month,price, avg(price) OVER (ORDER BY month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) FROM prices
