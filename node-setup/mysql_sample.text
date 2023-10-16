@@ -1,10 +1,11 @@
+sudo mysql -u root -p --local-infile
 
 CREATE TABLE prices (
     month INT UNIQUE,
     price INT
 );
 
-LOAD DATA LOCAL INFILE './test_data.csv'
+LOAD DATA LOCAL INFILE './prices.csv'
 INTO TABLE prices
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
