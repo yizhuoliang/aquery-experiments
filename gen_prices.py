@@ -2,7 +2,7 @@ import csv
 import random
 
 # Number of lines
-num_lines = 50000000
+num_lines = 10000000
 
 # Generate months in random order
 months = list(range(1, num_lines + 1))
