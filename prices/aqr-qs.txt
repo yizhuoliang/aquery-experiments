@@ -1,0 +1,3 @@
+select mont, avgs(3, price) from prices assuming asc mont
+
+insert into results select avgs(3, price) from prices assuming asc mont
