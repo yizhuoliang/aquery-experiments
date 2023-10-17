@@ -1,0 +1,2 @@
+CREATE TABLE prices(mont int, price int)
+LOAD DATA INFILE "prices.csv" INTO TABLE prices FIELDS TERMINATED BY ","

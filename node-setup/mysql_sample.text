@@ -3,7 +3,7 @@ sudo mysql -u root -p --local-infile
 CREATE TABLE prices (
     month INT UNIQUE,
     price INT
-);
+) ENGINE=MEMORY;
 
 LOAD DATA LOCAL INFILE './prices.csv'
 INTO TABLE prices
@@ -11,4 +11,8 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-SELECT month,price, avg(price) OVER (ORDER BY month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) FROM prices
+SELECT month,price, avg(price) OVER (ORDER BY month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) FROM prices;
+
+SHOW VARIABLES LIKE 'tmp_table_size';
+SET tmp_table_size = 1073741824;
+SET max_heap_table_size = 1073741824;
